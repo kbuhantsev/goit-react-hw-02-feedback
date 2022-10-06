@@ -11,7 +11,7 @@ import {
   typography,
 } from 'styled-system';
 
-export const Box = styled('div')(
+export const Box = styled.div(
   { display: flex },
   space,
   color,
