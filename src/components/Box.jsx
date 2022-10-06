@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 import {
+  flexbox,
   background,
   border,
   color,
-  flexbox,
   grid,
   layout,
   shadow,
@@ -12,7 +12,7 @@ import {
 } from 'styled-system';
 
 export const Box = styled.div(
-  { display: flex },
+  { display: 'flex' },
   space,
   color,
   layout,
