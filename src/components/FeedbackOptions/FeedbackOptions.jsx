@@ -1,11 +1,12 @@
 import { Box } from 'components/Box';
+import Button from 'components/Button/Button';
 
 function FeedbackOptions() {
   return (
     <Box>
-      <button type="button">Good</button>
-      <button type="button">Neutral</button>
-      <button type="button">Bad</button>
+      <Button title="Good" />
+      <Button title="Neutral" />
+      <Button title="Bad" />
     </Box>
   );
 }
