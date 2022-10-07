@@ -1,13 +1,17 @@
 import { Box } from 'components/Box';
 import PropTypes from 'prop-types';
+import React from 'react';
 
-function Section({ title, children }) {
-  return (
-    <Box as="section" flexDirection="column">
-      {title && <h2>{title}</h2>}
-      {children}
-    </Box>
-  );
+class Section extends React.Component {
+  render() {
+    const { title, children } = this.props;
+    return (
+      <Box as="section" flexDirection="column" ml={[3]} mb={[3]}>
+        {title && <h2 style={{ marginBottom: '10px' }}>{title}</h2>}
+        {children}
+      </Box>
+    );
+  }
 }
 
 Section.propTypes = {

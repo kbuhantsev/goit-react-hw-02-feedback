@@ -2,6 +2,7 @@ import { GlobalStyles } from './GlobalStyles/GlobalStyles.styled';
 import Section from './Section/Section';
 import FeedbackOptions from './FeedbackOptions/FeedbackOptions';
 import Statistics from './Statistics/Statistics';
+import Notification from './Notification/Notification';
 import React from 'react';
 
 export class App extends React.Component {
@@ -64,21 +65,28 @@ export class App extends React.Component {
   }
 
   render() {
+    let statistics;
+    if (this.state.total) {
+      statistics = (
+        <Statistics
+          good={this.state.good}
+          neutral={this.state.neutral}
+          bad={this.state.bad}
+          total={this.state.total}
+          positivePercentage={this.state.positivePercentage}
+        />
+      );
+    } else {
+      statistics = <Notification message="There is no feedback"></Notification>;
+    }
+
     return (
       <>
         <GlobalStyles />
         <Section title="Please live feedback">
           <FeedbackOptions onButtonClick={this.handleButtonClick} />
         </Section>
-        <Section title="Statistics">
-          <Statistics
-            good={this.state.good}
-            neutral={this.state.neutral}
-            bad={this.state.bad}
-            total={this.state.total}
-            positivePercentage={this.state.positivePercentage}
-          />
-        </Section>
+        <Section title="Statistics">{statistics}</Section>
       </>
     );
   }
