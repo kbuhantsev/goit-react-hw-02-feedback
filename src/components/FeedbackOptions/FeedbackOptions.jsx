@@ -7,7 +7,7 @@ class FeedbackOptions extends React.Component {
   render() {
     const { onButtonClick } = this.props;
     return (
-      <Box>
+      <Box gridGap="10px">
         <Button title="Good" onButtonClick={onButtonClick} action="good" />
         <Button
           title="Neutral"
