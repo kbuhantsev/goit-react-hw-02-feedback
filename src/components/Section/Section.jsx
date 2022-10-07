@@ -3,6 +3,11 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 class Section extends React.Component {
+  static propTypes = {
+    title: PropTypes.string,
+    children: PropTypes.node,
+  };
+
   render() {
     const { title, children } = this.props;
     return (
@@ -13,10 +18,5 @@ class Section extends React.Component {
     );
   }
 }
-
-Section.propTypes = {
-  title: PropTypes.string,
-  children: PropTypes.node,
-};
 
 export default Section;

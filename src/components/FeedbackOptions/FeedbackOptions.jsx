@@ -4,6 +4,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 class FeedbackOptions extends React.Component {
+  static propTypes = {
+    onButtonClick: PropTypes.func,
+  };
   render() {
     const { onButtonClick } = this.props;
     return (
@@ -19,9 +22,5 @@ class FeedbackOptions extends React.Component {
     );
   }
 }
-
-FeedbackOptions.propTypes = {
-  onButtonClick: PropTypes.func,
-};
 
 export default FeedbackOptions;

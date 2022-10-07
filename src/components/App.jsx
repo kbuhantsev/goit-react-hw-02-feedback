@@ -19,28 +19,19 @@ export class App extends React.Component {
 
     switch (actionName) {
       case 'good':
-        this.setState(
-          {
-            good: this.state.good + 1,
-          },
-          this.countTotalFeedback
-        );
+        this.setState(prevState => {
+          return { good: prevState.good + 1 };
+        }, this.countTotalFeedback);
         break;
       case 'neutral':
-        this.setState(
-          {
-            neutral: this.state.neutral + 1,
-          },
-          this.countTotalFeedback
-        );
+        this.setState(prevState => {
+          return { neutral: prevState.neutral + 1 };
+        }, this.countTotalFeedback);
         break;
       case 'bad':
-        this.setState(
-          {
-            bad: this.state.bad + 1,
-          },
-          this.countTotalFeedback
-        );
+        this.setState(prevState => {
+          return { bad: prevState.bad + 1 };
+        }, this.countTotalFeedback);
         break;
       default:
         console.log('в кнопке не понятный дата атрибут');
@@ -48,19 +39,18 @@ export class App extends React.Component {
   };
 
   countTotalFeedback() {
-    this.setState(
-      {
-        total: this.state.good + this.state.neutral + this.state.bad,
-      },
-      this.countPositiveFeedbackPercentage
-    );
+    this.setState(prevState => {
+      return { total: prevState.good + prevState.neutral + prevState.bad };
+    }, this.countPositiveFeedbackPercentage);
   }
 
   countPositiveFeedbackPercentage() {
-    this.setState({
-      positivePercentage: Math.round(
-        (this.state.good * 100) / this.state.total
-      ),
+    this.setState(prevState => {
+      return {
+        positivePercentage: Math.round(
+          (prevState.good * 100) / prevState.total
+        ),
+      };
     });
   }
 
