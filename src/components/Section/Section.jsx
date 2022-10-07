@@ -6,8 +6,8 @@ class Section extends React.Component {
   render() {
     const { title, children } = this.props;
     return (
-      <Box as="section" flexDirection="column" ml={[3]} mb={[3]}>
-        {title && <h2 style={{ marginBottom: '10px' }}>{title}</h2>}
+      <Box as="section" flexDirection="column" ml={[3]} mb={[4]}>
+        {title && <h2 style={{ marginBottom: '20px' }}>{title}</h2>}
         {children}
       </Box>
     );
