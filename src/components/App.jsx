@@ -17,25 +17,9 @@ export class App extends React.Component {
   handleButtonClick = event => {
     const actionName = event.target?.dataset?.action;
 
-    switch (actionName) {
-      case 'good':
-        this.setState(prevState => {
-          return { good: prevState.good + 1 };
-        }, this.countTotalFeedback);
-        break;
-      case 'neutral':
-        this.setState(prevState => {
-          return { neutral: prevState.neutral + 1 };
-        }, this.countTotalFeedback);
-        break;
-      case 'bad':
-        this.setState(prevState => {
-          return { bad: prevState.bad + 1 };
-        }, this.countTotalFeedback);
-        break;
-      default:
-        console.log('в кнопке не понятный дата атрибут');
-    }
+    this.setState(prevState => {
+      return { [actionName]: prevState[actionName] + 1 };
+    }, this.countTotalFeedback);
   };
 
   countTotalFeedback() {
@@ -56,19 +40,19 @@ export class App extends React.Component {
 
   render() {
     let statistics;
-    if (this.state.total) {
-      statistics = (
-        <Statistics
-          good={this.state.good}
-          neutral={this.state.neutral}
-          bad={this.state.bad}
-          total={this.state.total}
-          positivePercentage={this.state.positivePercentage}
-        />
-      );
-    } else {
-      statistics = <Notification message="There is no feedback"></Notification>;
-    }
+    this.state.total
+      ? (statistics = (
+          <Statistics
+            good={this.state.good}
+            neutral={this.state.neutral}
+            bad={this.state.bad}
+            total={this.state.total}
+            positivePercentage={this.state.positivePercentage}
+          />
+        ))
+      : (statistics = (
+          <Notification message="There is no feedback"></Notification>
+        ));
 
     return (
       <>
