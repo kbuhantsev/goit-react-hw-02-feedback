@@ -51,7 +51,10 @@ export class App extends React.Component {
       <>
         <GlobalStyles />
         <Section title="Please live feedback">
-          <FeedbackOptions onButtonClick={this.handleButtonClick} />
+          <FeedbackOptions
+            onButtonClick={this.handleButtonClick}
+            buttons={Object.keys(this.state)}
+          />
         </Section>
         <Section title="Statistics">{statistics}</Section>
       </>
