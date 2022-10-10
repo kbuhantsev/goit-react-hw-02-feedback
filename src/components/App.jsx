@@ -10,8 +10,6 @@ export class App extends React.Component {
     good: 0,
     neutral: 0,
     bad: 0,
-    total: 0,
-    positivePercentage: 0,
   };
 
   handleButtonClick = event => {
@@ -19,35 +17,30 @@ export class App extends React.Component {
 
     this.setState(prevState => {
       return { [actionName]: prevState[actionName] + 1 };
-    }, this.countTotalFeedback);
+    });
   };
 
   countTotalFeedback() {
-    this.setState(prevState => {
-      return { total: prevState.good + prevState.neutral + prevState.bad };
-    }, this.countPositiveFeedbackPercentage);
+    return this.state.good + this.state.neutral + this.state.bad;
   }
 
-  countPositiveFeedbackPercentage() {
-    this.setState(prevState => {
-      return {
-        positivePercentage: Math.round(
-          (prevState.good * 100) / prevState.total
-        ),
-      };
-    });
+  countPositiveFeedbackPercentage(total) {
+    return Math.round((this.state.good * 100) / total);
   }
 
   render() {
+    const total = this.countTotalFeedback();
+    const positivePercentage = this.countPositiveFeedbackPercentage(total);
+
     let statistics;
-    this.state.total
+    total
       ? (statistics = (
           <Statistics
             good={this.state.good}
             neutral={this.state.neutral}
             bad={this.state.bad}
-            total={this.state.total}
-            positivePercentage={this.state.positivePercentage}
+            total={total}
+            positivePercentage={positivePercentage}
           />
         ))
       : (statistics = (
