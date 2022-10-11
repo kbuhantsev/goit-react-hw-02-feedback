@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 import capitalize from 'lodash.capitalize';
 
 function FeedbackOptions({ onButtonClick, buttons }) {
-  console.log(buttons);
   return (
     <Box gridGap="10px">
       {buttons.map(button => (
